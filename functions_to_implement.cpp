@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
 /* String functions section */
 
 // Splits a single string on separator into a vector of strings
@@ -242,7 +243,7 @@ std::vector<double> MultiplesFilter(std::vector<double> v, double divides_by)
   std::vector<double> result;
   for (int i = 0; i < (int)v.size(); i++)
   {
-    if (fmod(v[i], divides_by) != 0)
+    if (v[i] / divides_by != floor(v[i] / divides_by))
     {
       result.push_back(v[i]);
     }
