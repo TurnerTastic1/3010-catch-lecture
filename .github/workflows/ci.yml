@@ -22,6 +22,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y g++ make
 
-      # Step 3: Build and test the code (test command is included in the Makefile)
+      # Step 3: Build the project
       - name: Build
         run: make
+
+      # Step 4: Run the tests
+      - name: Test
+        run: ./test

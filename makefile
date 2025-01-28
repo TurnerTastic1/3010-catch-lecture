@@ -4,8 +4,7 @@ CXXFLAGS = -std=c++17 -Wall -Werror -Wpedantic
 
 # The default target will build and run tests.
 test: test.o functions.o
-	$(CXX) $(CXXFLAGS) -o test_exec test.o functions.o
-	./test_exec
+	$(CXX) $(CXXFLAGS) -o test test.o functions.o
 
 # Compile object file for the test code
 test.o: test.cpp catch.hpp functions_to_implement.hpp
@@ -17,4 +16,4 @@ functions.o: functions_to_implement.cpp functions_to_implement.hpp
 
 # Clean target to remove all build artifacts
 clean:
-	rm -f *.o test_exec
+	rm -f *.o test
