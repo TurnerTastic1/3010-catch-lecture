@@ -1,0 +1,31 @@
+name: Build and Test
+
+# Trigger this workflow on pushes to the 'main' branch and on pull requests
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out your repository code
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      # Step 2: Install dependencies (GNU C++ and make)
+      - name: Install C++ toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ make
+
+      # Step 3: Build the code (assuming your Makefile default target is 'test')
+      - name: Build
+        run: make
+
+      # Step 4: Run the test executable (produced by make)
+      - name: Run tests
+        run: ./test_exec
